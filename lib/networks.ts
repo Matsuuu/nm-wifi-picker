@@ -90,7 +90,9 @@ Signal: ${signal.padEnd(3, " ")} ${bars}`;
         });
     }
 
-    const namedResults = results.filter(result => result.ssid !== "--" && result.ssid.length > 0);
+    const namedResults = results
+        .filter(result => result.ssid !== "--" && result.ssid.length > 0)
+        .sort((a, b) => a.ssid.localeCompare(b.ssid));
 
     return namedResults;
 }

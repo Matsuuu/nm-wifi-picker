@@ -38,6 +38,11 @@ const choice = await select({
 
 const network = networks[choice];
 
-connectToNetwork(network);
+const result = await connectToNetwork(network);
 
+if (!result.success) {
+    console.error("Failed to connect.");
+    exit(1);
+}
+console.log("\n" + chalk.green(result.output));
 console.log(chalk.blue("All done. See ya next time! 👋 "));
